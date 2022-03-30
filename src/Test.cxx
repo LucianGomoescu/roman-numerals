@@ -45,3 +45,14 @@ TestStatus TestValidArabicToRoman::Run() {
   }
   return TestStatus::Passed;
 }
+
+TestStatus TestOutOfRangeArabic::Run() {
+  vector<string> nums = {"-1", "0", "4001"};
+  for (auto num : nums) {
+    Conversion conversion(num);
+    if (conversion.GetStatus() != ConversionStatus::InvalidInput) {
+      return TestStatus::Failed;
+    }
+  }
+  return TestStatus::Passed;
+}

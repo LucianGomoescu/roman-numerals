@@ -40,7 +40,9 @@ Conversion::Conversion(string input) :
 
 void Conversion::DetermineConversionCase () {
   if (IsNumber(m_input)) {
-    m_case = ConversionCase::ArabicToRoman;
+    int num = stoi(m_input);
+    m_case = (num < 1 || num > 4000) ? ConversionCase::Inconvertible :
+                                       ConversionCase::ArabicToRoman;
   } else {
     m_case = ConversionCase::RomanToArabic;
   }
@@ -85,7 +87,7 @@ void Conversion::ConvertRomanToArabic() {
 
 bool Conversion::IsNumber(const string& str) {
     for (char const &c : str) {
-        if (isdigit(c) == 0) return false;
+        if (isdigit(c) == 0 && c != '-') return false;
     }
     return true;
 }

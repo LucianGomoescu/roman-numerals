@@ -21,3 +21,9 @@ public:
   string GetName() override { return "convert valid arabic to roman"; }
   TestStatus Run() override;
 };
+
+class TestOutOfRangeArabic: public ITest {
+public:
+  string GetName() override { return "convert out of range arabic numbers"; }
+  TestStatus Run() override;
+};
