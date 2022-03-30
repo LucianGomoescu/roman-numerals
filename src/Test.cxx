@@ -56,3 +56,20 @@ TestStatus TestOutOfRangeArabic::Run() {
   }
   return TestStatus::Passed;
 }
+
+TestStatus TestNonIntegerNumbers::Run() {
+    Conversion conversion("1.5");
+    return (conversion.GetStatus() == ConversionStatus::InvalidInput) ?
+      TestStatus::Passed : TestStatus::Failed;
+}
+
+TestStatus TestNotAllowedSymbols::Run() {
+    vector<string> badSymbols = {"IXE", "R"};
+    for (auto num : badSymbols) {
+      Conversion conversion(num);
+      if (conversion.GetStatus() != ConversionStatus::InvalidInput) {
+        return TestStatus::Failed;
+      }
+    }
+    return TestStatus::Passed;
+}

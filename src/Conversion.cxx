@@ -44,6 +44,16 @@ void Conversion::DetermineConversionCase () {
     m_case = (num < 1 || num > 4000) ? ConversionCase::Inconvertible :
                                        ConversionCase::ArabicToRoman;
   } else {
+    string allowedSymbols = "";
+    for (auto &[value, symbol]: gl_romans){
+      allowedSymbols += symbol;
+    }
+    for (auto c : m_input) {
+      if(allowedSymbols.find(c) == std::string::npos) { // symbol not allowed
+        m_case = ConversionCase::Inconvertible;
+        return;
+      }
+    }
     m_case = ConversionCase::RomanToArabic;
   }
 }
