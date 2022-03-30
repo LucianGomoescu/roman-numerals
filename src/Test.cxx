@@ -17,9 +17,18 @@ vector<string> gl_romanNums {"I", "II", "III", "IV", "V",
                           "CI", "CCCXLV", "MCDLIII", "MCMLXXXIX", "MMMM"};
 
 TestStatus TestValidRomanToArabic::Run() {
-  Conversion conversion("MMXXII");
-  conversion.GetStatus();
-  return TestStatus::Failed;
+  int i = 0;
+  for (auto romanNum : gl_romanNums) {
+    Conversion conversion(romanNum);
+    auto result = conversion.GetResult();
+    auto cStatus = conversion.GetStatus();
+    TestStatus tStatus = (cStatus == ConversionStatus::Done &&
+                          result == gl_arabicNums[i]) ?
+                          TestStatus::Passed : TestStatus::Failed;
+    if (tStatus == TestStatus::Failed) { return TestStatus::Failed; }
+    i++;
+  }
+  return TestStatus::Passed;
 }
 
 TestStatus TestValidArabicToRoman::Run() {

@@ -63,6 +63,23 @@ void Conversion::ConvertArabicToRoman() {
 }
 
 void Conversion::ConvertRomanToArabic() {
+  int arabic = 0;
+  int i = 0;
+  auto value = gl_romans[i].first;
+  auto symbol = gl_romans[i].second;
+  auto num = m_input;
+  while (!num.empty()) {
+    auto x = num.find(symbol);
+    if (x == 0) {
+      arabic += value;
+      num.erase(0, symbol.length());
+    } else {
+      i++;
+      value = gl_romans[i].first;
+      symbol = gl_romans[i].second;
+    }
+  }
+  m_result = to_string(arabic);
   m_status = ConversionStatus::Done;
 }
 
