@@ -15,3 +15,8 @@ How to build?
 	Note: we use Unix makefiles.
 6. If generation is successful then open the folder 'build' and run command 'make'.
 The executable 'convertRoman' is now ready for usage as described above.
+
+How to test?
+1. Go to 'build'.
+2. Execute './test' from command line if using bash or 'test' if using Command Prompt.
+3. The test results should be printed.
