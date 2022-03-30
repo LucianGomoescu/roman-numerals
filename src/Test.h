@@ -15,3 +15,9 @@ public:
   string GetName() override { return "convert valid roman to arabic"; }
   TestStatus Run() override;
 };
+
+class TestValidArabicToRoman: public ITest {
+public:
+  string GetName() override { return "convert valid arabic to roman"; }
+  TestStatus Run() override;
+};
