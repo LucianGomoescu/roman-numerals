@@ -20,3 +20,9 @@ How to test?
 1. Go to 'build'.
 2. Execute './test' from command line if using bash or 'test' if using Command Prompt.
 3. The test results should be printed.
+
+The code was tested on the following OS:
+1. Windows 10 64-bit
+2. Ubuntu 20.04
+
+There is no special requirement for any of the above operating systems.

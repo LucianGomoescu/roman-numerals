@@ -1,5 +1,5 @@
 project(RomanNumerals)
-CMAKE_MINIMUM_REQUIRED ( VERSION 3.15)
+CMAKE_MINIMUM_REQUIRED ( VERSION 3.0)
 
 add_executable (convertRoman
   main.cxx
