@@ -57,6 +57,13 @@ int main() {
     numTests++;
     numFailedTests += (status == TestStatus::Failed) ? 1 : 0;
   }
+  {
+    TestLowerCaseRomanNumerals test;
+    auto status = test.Run();
+    cout<<test.GetName()<<": "<<TestStatusAsString(status)<<endl;
+    numTests++;
+    numFailedTests += (status == TestStatus::Failed) ? 1 : 0;
+  }
   cout<<"------------------------"<<endl;
   cout<<numFailedTests<< " out of "<<numTests<<" tests failed."<<endl;
   return 0;

@@ -39,3 +39,9 @@ public:
   string GetName() override { return "convert not allowed symbols"; }
   TestStatus Run() override;
 };
+
+class TestLowerCaseRomanNumerals : public ITest {
+public:
+  string GetName() override { return "convert lower case roman numerals"; }
+  TestStatus Run() override;
+};

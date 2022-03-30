@@ -1,5 +1,6 @@
 #include "Conversion.h"
 
+#include <algorithm>
 #include <cassert>
 #include <utility>
 #include <vector>
@@ -49,7 +50,8 @@ void Conversion::DetermineConversionCase () {
       allowedSymbols += symbol;
     }
     for (auto c : m_input) {
-      if(allowedSymbols.find(c) == std::string::npos) { // symbol not allowed
+      // assume that lower case is allowed
+      if(allowedSymbols.find(toupper(c)) == std::string::npos) { // symbol not allowed
         m_case = ConversionCase::Inconvertible;
         return;
       }
@@ -80,6 +82,9 @@ void Conversion::ConvertRomanToArabic() {
   auto value = gl_romans[i].first;
   auto symbol = gl_romans[i].second;
   auto num = m_input;
+  // assume that lower case is allowed
+  for_each(num.begin(), num.end(), [](char & c) { c = toupper(c); });
+
   while (!num.empty()) {
     auto x = num.find(symbol);
     if (x == 0) {

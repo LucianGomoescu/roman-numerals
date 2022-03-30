@@ -73,3 +73,18 @@ TestStatus TestNotAllowedSymbols::Run() {
     }
     return TestStatus::Passed;
 }
+
+TestStatus TestLowerCaseRomanNumerals::Run() {
+    vector<string> lowerCaseRomanNumerals = {"iv", "xc"};
+    vector<string> arabics = {"4", "90"};
+    int i = 0;
+    for (auto num : lowerCaseRomanNumerals) {
+      Conversion conversion(num);
+      if (conversion.GetStatus() != ConversionStatus::Done ||
+          conversion.GetResult() != arabics[i]) {
+        return TestStatus::Failed;
+      }
+      i++;
+    }
+    return TestStatus::Passed;
+}
